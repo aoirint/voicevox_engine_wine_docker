@@ -25,8 +25,10 @@ RUN unzip ./voicevox.zip
 FROM aoirint/wine:nvidia-devel-v20210802a AS runtime-env
 COPY --from=build-env /work/VOICEVOX /opt/voicevox
 
+ADD ./launch.sh /
+
 WORKDIR /opt/voicevox
 USER root
 ENTRYPOINT []
-CMD [ "gosu", "user", "wine", "./run.exe" ]
+CMD [ "/launch.sh" ]
 
