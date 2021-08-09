@@ -3,7 +3,8 @@ CMD=
 .PHONY: build
 build:
 	docker buildx build . \
-		-t voicevox_engine_wine
+		-t voicevox_engine_wine \
+		--target runtime-env
 
 .PHONY: run
 run:
