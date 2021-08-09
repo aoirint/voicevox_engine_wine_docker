@@ -9,23 +9,24 @@ RUN <<EOF
         unzip
 EOF
 
-RUN pip3 install \
-        gdown>=3.13.0
+#RUN pip3 install \
+#        gdown>=3.13.0
 
 WORKDIR /work
 #RUN <<EOF
-#    wget -O /dev/null --save-cookies ./cookie "${VOICEVOX_URL}"
-#    CONFIRM="$(awk '/_warning_/ {print $NF}' ./cookie)"
-#    echo $CONFIRM
-#    wget -O ./voicevox.zip --load-cookies ./cookie "${VOICEVOX_URL}&confirm=${CONFIRM}"
-#    rm ./cookie
+#    gdown -O ./voicevox.zip "${VOICEVOX_URL}"
+#    unzip ./voicevox.zip
 #EOF
 
-RUN <<EOF
-    gdown -O ./voicevox.zip "${VOICEVOX_URL}"
-    unzip ./voicevox.zip
-EOF
+ADD ./voicevox.zip /work/
+RUN unzip ./voicevox.zip
 
-FROM aoirint/wine:nvidia-devel-v20210804a AS runtime-env
-COPY --from=build-env /work/voicevox /opt/voicevox
+
+FROM aoirint/wine:nvidia-devel-v20210802a AS runtime-env
+COPY --from=build-env /work/VOICEVOX /opt/voicevox
+
+WORKDIR /opt/voicevox
+USER root
+ENTRYPOINT []
+CMD [ "gosu", "user", "wine", "./run.exe" ]
 
