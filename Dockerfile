@@ -22,13 +22,13 @@ ADD ./voicevox.zip /work/
 RUN unzip ./voicevox.zip
 
 
-FROM aoirint/wine:nvidia-devel-v20210802a AS runtime-env
+FROM aoirint/wine:ubuntu-devel-v20210802a AS runtime-env
 COPY --from=build-env /work/VOICEVOX /opt/voicevox
 
-ADD ./launch.sh /
+ADD ./cmd.sh /
 
 WORKDIR /opt/voicevox
 USER root
 ENTRYPOINT []
-CMD [ "/launch.sh" ]
+CMD [ "/cmd.sh" ]
 
