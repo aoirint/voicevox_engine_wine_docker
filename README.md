@@ -25,6 +25,15 @@ make run
 ```
 
 
+### Usage: docker-compose
+
+```shell
+make build
+
+docker-compose up -d
+```
+
+
 ## Simple Image
 VOICEVOXのバイナリをDockerイメージに含めない版。容量節約ができる。
 
