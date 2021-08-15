@@ -14,21 +14,20 @@ EOF
 
 WORKDIR /work
 #RUN <<EOF
-#    gdown -O ./voicevox.zip "${VOICEVOX_URL}"
-#    unzip ./voicevox.zip
+#    gdown -O ./VOICEVOX.zip "${VOICEVOX_URL}"
+#    unzip ./VOICEVOX.zip
 #EOF
 
-ADD ./voicevox.zip /work/
-RUN unzip ./voicevox.zip
+ADD ./VOICEVOX.zip /work/
+RUN unzip -d /opt/VOICEVOX -j ./VOICEVOX.zip 
 
 
 FROM aoirint/wine:ubuntu-devel-v20210802a AS runtime-env
-COPY --from=build-env /work/VOICEVOX /opt/voicevox
+COPY --from=build-env /opt/VOICEVOX /opt/VOICEVOX
 
 ADD ./cmd.sh /
 
-WORKDIR /opt/voicevox
+WORKDIR /opt/VOICEVOX
 USER root
 ENTRYPOINT []
 CMD [ "/cmd.sh" ]
-
