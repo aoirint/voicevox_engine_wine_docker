@@ -1,12 +1,13 @@
 # syntax=docker/dockerfile:1.3-labs
-FROM python:3.9 AS build-env
+FROM ubuntu:focal AS build-env
 
 ARG VOICEVOX_URL=https://drive.google.com/uc?id=11dY5hkjWQaKK4B3afnd5wyYZbj7fFwtJ
 
 RUN <<EOF
     apt-get update
     apt-get install -y \
-        unzip
+        unzip \
+        language-pack-ja-base
 EOF
 
 #RUN pip3 install \
@@ -19,7 +20,7 @@ WORKDIR /work
 #EOF
 
 ADD ./VOICEVOX.zip /work/
-RUN unzip -d /opt/VOICEVOX -j ./VOICEVOX.zip 
+RUN LANG=ja_JP.UTF-8 unzip -O cp932 -d /opt/VOICEVOX -j -o ./VOICEVOX.zip
 
 
 FROM aoirint/wine:ubuntu-devel-v20210802a AS runtime-env
