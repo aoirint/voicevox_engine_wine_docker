@@ -31,7 +31,7 @@ VOICEVOXのバイナリをDockerイメージに含めない版。容量節約が
 ### Directory Structure
 配布zipを解凍する。
 
-`VOICEVOX {version}.zip`を解凍して、`run.exe`が存在する階層を`VOICEVOX`ディレクトリとして配置する。
+`VOICEVOX {version}.zip`を解凍、`VOICEVOX`ディレクトリとして配置する。
 
 ```shell
 unzip -O cp932 ./VOICEVOX.zip
