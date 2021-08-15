@@ -1,0 +1,10 @@
+version: '3.9'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: voicevox_engine_wine
+    restart: always
+    ports:
+      - '127.0.0.1:50021:50021'
