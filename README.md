@@ -11,7 +11,6 @@ VOICEVOXのバイナリをDockerイメージに含める版。可搬性が高い
 ```
 ├── cmd.sh
 ├── Dockerfile
-├── Dockerfile.simple
 ├── Makefile
 ├── README.md
 ├── VOICEVOX.zip
@@ -34,15 +33,20 @@ VOICEVOXのバイナリをDockerイメージに含めない版。容量節約が
 
 `VOICEVOX {version}.zip`を解凍して、`run.exe`が存在する階層を`VOICEVOX`ディレクトリとして配置する。
 
+```shell
+unzip -O cp932 ./VOICEVOX.zip
+```
+
 ```
 ├── cmd.sh
-├── Dockerfile
 ├── Dockerfile.simple
 ├── Makefile
 ├── README.md
 └── VOICEVOX
-     ├── run.exe
-     └── VOICEVOX.exe
+     ├── VOICEVOX
+     │   ├── run.exe
+     │   └── VOICEVOX.exe
+     └── 使い方.url
 ```
 
 ### Usage
