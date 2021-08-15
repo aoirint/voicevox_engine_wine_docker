@@ -13,7 +13,7 @@ VOICEVOXのバイナリをDockerイメージに含める版。可搬性が高い
 ├── Dockerfile
 ├── Makefile
 ├── README.md
-├── VOICEVOX.zip
+└── VOICEVOX.zip
 ```
 
 ### Usage
@@ -34,7 +34,8 @@ VOICEVOXのバイナリをDockerイメージに含めない版。容量節約が
 `VOICEVOX {version}.zip`を解凍、`VOICEVOX`ディレクトリとして配置する。
 
 ```shell
-unzip -O cp932 ./VOICEVOX.zip
+unzip -O cp932 ./VOICEVOX*.zip
+mv ./VOICEVOX*/ VOICEVOX
 ```
 
 ```
