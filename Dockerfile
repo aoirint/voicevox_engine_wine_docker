@@ -20,7 +20,8 @@ WORKDIR /work
 #EOF
 
 ADD ./VOICEVOX.zip /work/
-RUN LANG=ja_JP.UTF-8 unzip -O cp932 -d /opt/VOICEVOX -j -o ./VOICEVOX.zip
+RUN LANG=ja_JP.UTF-8 unzip -O cp932 -o ./VOICEVOX.zip && \
+    mv "VOICEVOX*/VOICEVOX" /opt/VOICEVOX
 
 
 FROM aoirint/wine:ubuntu-devel-v20210802a AS runtime-env
