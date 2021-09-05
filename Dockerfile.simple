@@ -1,9 +1,0 @@
-# syntax=docker/dockerfile:1.3-labs
-FROM aoirint/wine:ubuntu-devel-v20210802a
-
-ADD ./cmd.sh /
-
-WORKDIR /opt/VOICEVOX
-USER root
-ENTRYPOINT []
-CMD [ "/cmd.sh" ]
