@@ -1,6 +1,8 @@
 # voicevox_engine_wine_docker
 
-VOICEVOX EngineをLinux・Wine上で実行するためのDockerイメージ（Windows向けバイナリ流用、Dockerイメージのローカルビルド必須）。
+VOICEVOX EngineをLinux・Wine上で実行するためのDockerイメージ。
+
+初回起動時にWindows向けバイナリをダウンロード、実行する。
 
 ## Usage
 ```shell
