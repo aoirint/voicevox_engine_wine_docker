@@ -7,7 +7,7 @@ VOICEVOX EngineをLinux・Wine上で実行するためのDockerイメージ。
 - https://github.com/Hiroshiba/voicevox
 - https://github.com/Hiroshiba/voicevox/releases/tag/0.5.1
 
-## Usage
+## Usage: Makefile
 ```shell
 # Dockerイメージのビルド
 make
@@ -24,3 +24,10 @@ make run VERSION=0.5.1
 `./work/voicevox/0.5.1/run.exe`のように配布版アーカイブを（DLL等を含めて）解凍すると、初回起動時のダウンロード・解凍を代替できる。
 
 解凍後は`./work/tmp/`を削除しても問題ない。
+
+## Usage: docker-compose
+```shell
+docker-compose build
+
+docker-compose up -d
+```
