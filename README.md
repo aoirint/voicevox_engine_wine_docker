@@ -7,6 +7,10 @@ VOICEVOX EngineをLinux・Wine上で実行するためのDockerイメージ（Wi
 # Dockerイメージのビルド
 make
 
-# Voicevox Engineの起動
+# Voicevox配布版のダウンロード・Voicevox Engineの起動
 make run
 ```
+
+`./work/tmp`に配布版アーカイブ（`*.nsis.7z.*`）を配置すると、初回起動時のダウンロードを代替できる。
+
+`./work/voicevox/run.exe`のように配布版アーカイブを（DLL等を含めて）解凍すると、初回起動時のダウンロード・解凍を代替できる。
