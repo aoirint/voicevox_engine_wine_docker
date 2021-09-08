@@ -8,5 +8,8 @@ services:
       VERSION: 0.5.1
     volumes:
       - './work:/work'
+      # - 'voicevox_engine:/work'
     ports:
       - '127.0.0.1:50021:50021'
+# volumes:
+  # voicevox_engine:
