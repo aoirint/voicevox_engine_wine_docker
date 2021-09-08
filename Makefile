@@ -1,4 +1,5 @@
 ROOT_DIR = $(dir $(realpath $(firstword $(MAKEFILE_LIST))))
+VERSION=0.5.0
 CMD=
 
 build:
@@ -6,7 +7,7 @@ build:
 
 run:
 	docker run --rm -it \
-		-e VERSION="0.5.0" \
+		-e VERSION="${VERSION}" \
 		-v "${ROOT_DIR}/work:/work" \
 		-p '127.0.0.1:50021:50021' \
 		voicevox_engine_wine ${CMD}
