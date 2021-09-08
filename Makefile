@@ -1,5 +1,5 @@
 ROOT_DIR = $(dir $(realpath $(firstword $(MAKEFILE_LIST))))
-VERSION=0.5.1
+VERSION = 0.5.1
 CMD=
 
 build:
