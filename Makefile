@@ -6,7 +6,7 @@ build:
 
 run:
 	docker run --rm -it \
-		-v "${ROOT_DIR}/tmp:/work/tmp" \
+		-v "${ROOT_DIR}/work:/work" \
 		-v "/tmp/.X11-unix:/tmp/.X11-unix" \
 		-e DISPLAY \
 		voicevox_engine_wine:lite ${CMD}
