@@ -11,5 +11,5 @@ chown -R user:user /work
 gosu user bash /scripts/user.sh
 
 rm -f /tmp/.X99-lock
-cd /work/voicevox
+cd "/work/voicevox/${VERSION}"
 gosu user xvfb-run wine ./run.exe --host 0.0.0.0

@@ -6,6 +6,7 @@ build:
 
 run:
 	docker run --rm -it \
+		-e VERSION="0.5.0" \
 		-v "${ROOT_DIR}/work:/work" \
 		-p '127.0.0.1:50021:50021' \
 		voicevox_engine_wine ${CMD}

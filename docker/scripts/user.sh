@@ -2,10 +2,11 @@
 
 set -ex
 
-if [ ! -f "/work/voicevox/run.exe" ]; then
+VERSION=${VERSION:?set env var VERSION}
+INSTALLROOT="/work/voicevox/${VERSION}"
+
+if [ ! -f "${INSTALLROOT}/run.exe" ]; then
     TMPROOT="/work/tmp"
-    INSTALLROOT="/work/voicevox"
-    VERSION="0.5.0"
 
     FILENAME_ARCHIVE0="voicevox-${VERSION}-x64.nsis.7z.0"
     FILENAME_ARCHIVE1="voicevox-${VERSION}-x64.nsis.7z.1"
