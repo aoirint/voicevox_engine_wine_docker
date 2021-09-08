@@ -46,10 +46,35 @@ RUN gosu user winetricks win10
 RUN gosu user xvfb-run \
         sh -c 'wineboot && winetricks -q dotnet472; wineserver -w'
 
-ADD ./scripts /scripts
+ADD ./scripts/cmd.sh /scripts/cmd.sh
+ADD ./scripts/user.sh /scripts/user.sh
 
 WORKDIR /work
 
 USER root
 ENTRYPOINT []
 CMD [ "/scripts/cmd.sh" ]
+
+
+FROM ubuntu-base AS ubuntu-gui
+
+RUN apt-get update && \
+    apt-get install -y \
+        pulseaudio \
+        wait-for-it
+
+RUN echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections && \
+    apt-get install -y \
+        language-pack-ja \
+        fontconfig \
+        fonts-noto-cjk \
+        ttf-mscorefonts-installer && \
+    fc-cache -fv && \
+    update-locale LANG=ja_JP.UTF-8
+
+RUN rm -f /tmp/.X99-lock && \
+    gosu user winetricks msxml6 mfc40
+
+ADD ./scripts/gui.sh /scripts/gui.sh
+
+CMD [ "/scripts/gui.sh" ]
