@@ -88,26 +88,28 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+RUN rm -f /tmp/.X99-lock && \
+    gosu user xvfb-run \
+        sh -c 'wineboot && winetricks -q vcrun2019; wineserver -w'
+
+RUN rm -f /tmp/.X99-lock && \
+    gosu user winetricks \
+        fakejapanese
+
 # RUN echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections && \
+#     apt-get update && \
 #     apt-get install -y \
 #         language-pack-ja \
 #         fontconfig \
 #         fonts-noto-cjk \
 #         ttf-mscorefonts-installer && \
+#     apt-get clean && \
 #     rm -rf /var/lib/apt/lists/* && \
 #     fc-cache -fv && \
 #     update-locale LANG=ja_JP.UTF-8
 
 # RUN rm -f /tmp/.X99-lock && \
 #     gosu user winetricks msxml6 mfc40
-
-# RUN rm -f /tmp/.X99-lock && \
-#     gosu user winetricks \
-#         allfonts \
-#         fakejapanese
-#
-# RUN gosu user xvfb-run \
-#         sh -c 'wineboot && winetricks -q vcrun2019; wineserver -w'
 
 ADD ./scripts/gui.sh /scripts/gui.sh
 

@@ -13,6 +13,8 @@ gosu user bash /scripts/user.sh
 rm -f /tmp/.X99-lock
 cd "/work/voicevox/${VERSION}"
 
-gosu user wine ./run.exe &
+gosu user wine bash
 
-gosu user wine ./VOICEVOX.exe
+# gosu user wine ./run.exe &
+#
+# gosu user wine ./VOICEVOX.exe
