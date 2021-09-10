@@ -21,7 +21,7 @@ build-gui:
 	docker build ./docker \
 		-t voicevox_engine_wine:gui \
 		--target ubuntu-gui \
-		--build-arg BASE_IMAGE=nvidia/opengl:1.0-glvnd-runtime-ubuntu18.04
+		--build-arg BASE_IMAGE=nvidia/opengl:base-ubuntu18.04
 
 .PHONY: run-gui
 run-gui:
