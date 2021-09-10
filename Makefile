@@ -4,7 +4,9 @@ CMD=
 
 .PHONY: build
 build:
-	docker build ./docker -t voicevox_engine_wine --target ubuntu-base
+	docker build ./docker \
+		-t voicevox_engine_wine \
+		--target ubuntu-base
 
 .PHONY: run
 run:
@@ -16,7 +18,10 @@ run:
 
 .PHONY: build-gui
 build-gui:
-	docker build ./docker -t voicevox_engine_wine:gui --target ubuntu-gui
+	docker build ./docker \
+		-t voicevox_engine_wine:gui \
+		--target ubuntu-gui \
+		--build-arg BASE_IMAGE=nvidia/opengl:1.0-glvnd-runtime-ubuntu18.04
 
 .PHONY: run-gui
 run-gui:
@@ -33,4 +38,5 @@ run-gui:
     -e "HOST_UID=$(shell id -u)" \
     -e "HOST_GID=$(shell id -g)" \
 		--shm-size 8GB \
+		--gpus all \
 		voicevox_engine_wine:gui ${CMD}
