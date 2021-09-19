@@ -2,6 +2,13 @@
 
 VOICEVOX EngineをLinux・Wine上で実行するためのDockerイメージ。
 
+VOICEVOX Coreの公開により、公式Dockerイメージが公開されたため、そちらを使ってください！
+
+- https://github.com/Hiroshiba/voicevox_engine
+- https://hub.docker.com/r/hiroshiba/voicevox_engine
+
+---
+
 初回起動時にWindows向けバイナリをダウンロード、実行する。
 
 - https://github.com/Hiroshiba/voicevox
